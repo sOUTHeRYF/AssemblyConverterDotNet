@@ -26,6 +26,8 @@
         private TypeReference voidType;
 
         private Collection<FieldDefinition>.Enumerator wrapEnum;
+        private FieldDefinition wrapField;
+        private IEnumerator<FieldWrapper> fieldWrapperEnumer;
         private MethodDefinition AddGetter(TypeWrapper typeWrapper, FieldWrapper fieldWrapper)
         {
             MethodDefinition item = new MethodDefinition(string.Format("$Get{0}", fieldWrapper.Id), MethodAttributes.CompilerControlled | MethodAttributes.FamANDAssem | MethodAttributes.Family | MethodAttributes.HideBySig | MethodAttributes.Static, this.GetType(fieldWrapper));
@@ -192,7 +194,7 @@
             Instruction[] targets = new Instruction[members.Length];
             ilProcessor.Emit(OpCodes.Switch, targets);
             ilProcessor.Emit(OpCodes.Ldstr, indexParameter.Name);
-            ilProcessor.Emit(OpCodes.Newobj, destModule.ImportReference(base.ModuleContext.GetCorLibMethod("System.ArgumentOutOfRangeException", InnerClass.<>9__28_0 ?? (InnerClass.<>9__28_0 = new Func<MethodDefinition, bool>(InnerClass.<>9.<EmitKnownStructFieldReturn>b__28_0)))));
+            ilProcessor.Emit(OpCodes.Newobj, destModule.ImportReference(base.ModuleContext.GetCorLibMethod("System.ArgumentOutOfRangeException", InnerClass.FuncA ?? (InnerClass.FuncA = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsEmitKnownStructFieldReturnConstructorOneParam)))));
             ilProcessor.Emit(OpCodes.Throw);
             Collection<FieldDefinition> fields = field.FieldType.Resolve().Fields;
             for (int i = 0; i < members.Length; i = num)
@@ -214,7 +216,7 @@
             Instruction[] targets = new Instruction[members.Length];
             ilProcessor.Emit(OpCodes.Switch, targets);
             ilProcessor.Emit(OpCodes.Ldstr, indexParameter.Name);
-            ilProcessor.Emit(OpCodes.Newobj, destModule.ImportReference(base.ModuleContext.GetCorLibMethod("System.ArgumentOutOfRangeException", <>c.<>9__29_0 ?? (<>c.<>9__29_0 = new Func<MethodDefinition, bool>(<>c.<>9.<EmitKnownStructFieldSetReturn>b__29_0)))));
+            ilProcessor.Emit(OpCodes.Newobj, destModule.ImportReference(base.ModuleContext.GetCorLibMethod("System.ArgumentOutOfRangeException", InnerClass.FuncB ?? (InnerClass.FuncB = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsEmitKnownStructFieldSetReturnConstructorOneParam)))));
             ilProcessor.Emit(OpCodes.Throw);
             Collection<FieldDefinition> fields = field.FieldType.Resolve().Fields;
             for (int i = 0; i < members.Length; i = num)
@@ -309,8 +311,8 @@
             }
             return colorMembers;
         }
-
-        [IteratorStateMachine(typeof(<GetNestedFieldsRecurse>d__39))]
+        //     [IteratorStateMachine(typeof(<GetNestedFieldsRecurse>d__39))]
+       // [IteratorStateMachine(typeof(AddFieldGetterSetterStep.GetNestedFieldsRecurse))]
         private IEnumerable<FieldWrapper> GetNestedFieldsRecurse(FieldDefinition nestedStruct, List<FieldDefinition> seq)
         {
             if (nestedStruct.FieldType is TypeDefinition)
@@ -319,29 +321,27 @@
                 {
                     while (this.wrapEnum.MoveNext())
                     {
-                        this.<field>5__1 = this.wrapEnum.Current;
-                        if (((!this.<field>5__1.IsStatic && !this.<field>5__1.IsInitOnly) && !this.<field>5__1.IsNotSerialized) && (this.<field>5__1.IsPublic || AssemblyWrapper.HasSerializeFieldAttribute(this.<field>5__1)))
+                        this.wrapField = this.wrapEnum.Current;
+                        if (((!this.wrapField.IsStatic && !this.wrapField.IsInitOnly) && !this.wrapField.IsNotSerialized) && (this.wrapField.IsPublic || AssemblyWrapper.HasSerializeFieldAttribute(this.wrapField)))
                         {
-                            switch (this.<field>5__1.FieldType.MetadataType)
+                            switch (this.wrapField.FieldType.MetadataType)
                             {
                                 case MetadataType.Boolean:
                                 case MetadataType.Single:
                                     FieldWrapper wrapper;
-                                    wrapper = new FieldWrapper(0, this.<field>5__1, this.MetadataContainer.AddType(this.<field>5__1.FieldType)) {
-                                        Name = string.Format("{0}.{1}", nestedStruct.Name, wrapper.Name),
-                                        StructSequence = seq.ToArray()
-                                    };
+                                    wrapper = new FieldWrapper(0, this.wrapField, this.MetadataContainer.AddType(this.wrapField.FieldType));
+                                    wrapper.Name = string.Format("{0}.{1}", nestedStruct.Name, wrapper.Name);
+                                    wrapper.StructSequence = seq.ToArray();
                                     yield return wrapper;
                                     break;
 
                                 case MetadataType.ValueType:
-                                    if (AssemblyWrapper.specialStructs.Contains<string>(this.<field>5__1.FieldType.FullName))
+                                    if (AssemblyWrapper.specialStructs.Contains<string>(this.wrapField.FieldType.FullName))
                                     {
                                         FieldWrapper wrapper2;
-                                        wrapper2 = new FieldWrapper(0, this.<field>5__1, this.MetadataContainer.AddType(this.<field>5__1.FieldType)) {
-                                            Name = string.Format("{0}.{1}", nestedStruct.Name, wrapper2.Name),
-                                            StructSequence = seq.ToArray()
-                                        };
+                                        wrapper2 = new FieldWrapper(0, this.wrapField, this.MetadataContainer.AddType(this.wrapField.FieldType));
+                                        wrapper2.Name = string.Format("{0}.{1}", nestedStruct.Name, wrapper2.Name);
+                                        wrapper2.StructSequence = seq.ToArray();
                                         yield return wrapper2;
                                     }
                                     else
@@ -350,22 +350,22 @@
                                         {
                                             seq = new List<FieldDefinition>();
                                         }
-                                        seq.Add(this.<field>5__1);
-                                        using (this.<>7__wrap2 = this.GetNestedFieldsRecurse(this.<field>5__1, seq).GetEnumerator())
+                                        seq.Add(this.wrapField);
+                                        using (this.fieldWrapperEnumer = this.GetNestedFieldsRecurse(this.wrapField, seq).GetEnumerator())
                                         {
-                                            while (this.<>7__wrap2.MoveNext())
+                                            while (this.fieldWrapperEnumer.MoveNext())
                                             {
-                                                FieldWrapper current = this.<>7__wrap2.Current;
-                                                current.Name = string.Format("{0}.{1}", this.<field>5__1.Name, current.Name);
+                                                FieldWrapper current = this.fieldWrapperEnumer.Current;
+                                                current.Name = string.Format("{0}.{1}", this.wrapField.Name, current.Name);
                                                 yield return current;
                                             }
                                         }
-                                        this.<>7__wrap2 = null;
+                                        this.fieldWrapperEnumer = null;
                                         seq.RemoveAt(seq.Count - 1);
                                     }
                                     break;
                             }
-                            this.<field>5__1 = null;
+                            this.wrapField = null;
                         }
                     }
                 }
@@ -844,12 +844,13 @@
             public static Func<MethodDefinition, bool> FuncA;
             public static Func<MethodDefinition, bool> FuncB;
 
-            internal bool <EmitKnownStructFieldReturn>b__28_0(MethodDefinition m)
+           // internal bool <EmitKnownStructFieldReturn>b__28_0(MethodDefinition m)
+           internal bool IsEmitKnownStructFieldReturnConstructorOneParam(MethodDefinition m)
             {
                 return (m.IsConstructor && (m.Parameters.Count == 1));
             }
 
-            internal bool <EmitKnownStructFieldSetReturn>b__29_0(MethodDefinition m)
+            internal bool IsEmitKnownStructFieldSetReturnConstructorOneParam(MethodDefinition m)
             {
                 return (m.IsConstructor && (m.Parameters.Count == 1));
             }
