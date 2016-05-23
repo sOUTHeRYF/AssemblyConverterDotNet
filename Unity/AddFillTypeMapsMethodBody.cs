@@ -27,7 +27,7 @@
         private void ConstructDictionary(ILProcessor ilProcessor, int typeCount)
         {
             ilProcessor.Body.Variables.Add(new VariableDefinition(this.dictionaryInstanceType));
-            MethodDefinition method = this.dictionaryType.Methods.Single<MethodDefinition>(<>c.<>9__15_0 ?? (<>c.<>9__15_0 = new Func<MethodDefinition, bool>(<>c.<>9.<ConstructDictionary>b__15_0)));
+            MethodDefinition method = this.dictionaryType.Methods.Single<MethodDefinition>(InnerClass.FuncC ?? (InnerClass.FuncC = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsConstructDictionarySpecial)));
             TypeReference[] arguments = new TypeReference[] { this.systemTypeType, this.int32Type };
             MethodReference reference = this.Import(method).MakeGenericMethod(arguments);
             ilProcessor.Emit(OpCodes.Ldarg_0);
@@ -41,7 +41,7 @@
         private void ConstructList(ILProcessor ilProcessor, int typeCount)
         {
             ilProcessor.Body.Variables.Add(new VariableDefinition(this.listInstanceType));
-            MethodDefinition method = this.listType.Methods.Single<MethodDefinition>(<>c.<>9__16_0 ?? (<>c.<>9__16_0 = new Func<MethodDefinition, bool>(<>c.<>9.<ConstructList>b__16_0)));
+            MethodDefinition method = this.listType.Methods.Single<MethodDefinition>(InnerClass.FuncD ?? (InnerClass.FuncD = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsConstructListSpecial)));
             TypeReference[] arguments = new TypeReference[] { this.systemTypeType };
             MethodReference reference = this.Import(method).MakeGenericMethod(arguments);
             ilProcessor.Emit(OpCodes.Ldarg_1);
@@ -55,7 +55,7 @@
         protected override IStepContext Execute()
         {
             this.Initialize();
-            IOrderedEnumerable<TypeWrapper> source = base.MetadataContainer.Assemblies.SelectMany<AssemblyWrapper, TypeWrapper>((<>c.<>9__12_0 ?? (<>c.<>9__12_0 = new Func<AssemblyWrapper, IEnumerable<TypeWrapper>>(<>c.<>9.<Execute>b__12_0)))).OrderBy<TypeWrapper, int>(<>c.<>9__12_1 ?? (<>c.<>9__12_1 = new Func<TypeWrapper, int>(<>c.<>9.<Execute>b__12_1)));
+            IOrderedEnumerable<TypeWrapper> source = base.MetadataContainer.Assemblies.SelectMany<AssemblyWrapper, TypeWrapper>((InnerClass.FuncA ?? (InnerClass.FuncA = new Func<AssemblyWrapper, IEnumerable<TypeWrapper>>(InnerClass.InnerInstance.GetExecuteParamA)))).OrderBy<TypeWrapper, int>(InnerClass.FuncB ?? (InnerClass.FuncB = new Func<TypeWrapper, int>(InnerClass.InnerInstance.GetExecuteParamB)));
             int typeCount = source.Last<TypeWrapper>().Id + 1;
             this.fillMapsMethod.Body.Instructions.Clear();
             MethodBody body = this.fillMapsMethod.Body;
@@ -137,7 +137,7 @@
         private void Initialize()
         {
             this.bootstrapHelpers = base.OperationContext.UnityEngineModuleContext.Module.GetType("UnityEngineInternal.BootstrapHelpers");
-            this.fillMapsMethod = this.bootstrapHelpers.Methods.Single<MethodDefinition>(<>c.<>9__17_0 ?? (<>c.<>9__17_0 = new Func<MethodDefinition, bool>(<>c.<>9.<Initialize>b__17_0)));
+            this.fillMapsMethod = this.bootstrapHelpers.Methods.Single<MethodDefinition>(InnerClass.FuncE ?? (InnerClass.FuncE = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.GetInitializeParamA)));
             this.dictionaryType = base.OperationContext.UnityEngineModuleContext.GetCorLibType("System.Collections.Generic.Dictionary`2").Resolve();
             this.listType = base.OperationContext.UnityEngineModuleContext.GetCorLibType("System.Collections.Generic.List`1").Resolve();
             this.systemTypeType = base.OperationContext.UnityEngineModuleContext.GetCorLibType("System.Type");
@@ -148,64 +148,64 @@
             this.dictionaryInstanceType.GenericArguments.Add(this.int32Type);
             this.listInstanceType = new GenericInstanceType(this.Import(this.listType));
             this.listInstanceType.GenericArguments.Add(this.systemTypeType);
-            MethodDefinition setMethod = this.dictionaryType.Properties.Single<PropertyDefinition>((<>c.<>9__17_1 ?? (<>c.<>9__17_1 = new Func<PropertyDefinition, bool>(<>c.<>9.<Initialize>b__17_1)))).SetMethod;
+            MethodDefinition setMethod = this.dictionaryType.Properties.Single<PropertyDefinition>((InnerClass.FuncF ?? (InnerClass.FuncF = new Func<PropertyDefinition, bool>(InnerClass.InnerInstance.GetInitializeParamB)))).SetMethod;
             TypeReference[] arguments = new TypeReference[] { this.systemTypeType, this.int32Type };
             this.dictionaryAddMethod = this.Import(setMethod).MakeGenericMethod(arguments);
-            MethodDefinition method = this.listType.Methods.Single<MethodDefinition>(<>c.<>9__17_2 ?? (<>c.<>9__17_2 = new Func<MethodDefinition, bool>(<>c.<>9.<Initialize>b__17_2)));
+            MethodDefinition method = this.listType.Methods.Single<MethodDefinition>(InnerClass.FuncG ?? (InnerClass.FuncG = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.GetInitializeParamC)));
             TypeReference[] referenceArray2 = new TypeReference[] { this.systemTypeType };
             this.listAddMethod = this.Import(method).MakeGenericMethod(referenceArray2);
-            this.typeOfMethod = this.Import(this.systemTypeType.Resolve().Methods.Single<MethodDefinition>(<>c.<>9__17_3 ?? (<>c.<>9__17_3 = new Func<MethodDefinition, bool>(<>c.<>9.<Initialize>b__17_3))));
+            this.typeOfMethod = this.Import(this.systemTypeType.Resolve().Methods.Single<MethodDefinition>(InnerClass.FuncH ?? (InnerClass.FuncH = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.GetInitializeParamD))));
         }
 
         [Serializable, CompilerGenerated]
-        private sealed class <>c
+        private sealed class InnerClass
         {
-            public static readonly AddFillTypeMapsMethodBody.<>c <>9 = new AddFillTypeMapsMethodBody.<>c();
-            public static Func<AssemblyWrapper, IEnumerable<TypeWrapper>> <>9__12_0;
-            public static Func<TypeWrapper, int> <>9__12_1;
-            public static Func<MethodDefinition, bool> <>9__15_0;
-            public static Func<MethodDefinition, bool> <>9__16_0;
-            public static Func<MethodDefinition, bool> <>9__17_0;
-            public static Func<PropertyDefinition, bool> <>9__17_1;
-            public static Func<MethodDefinition, bool> <>9__17_2;
-            public static Func<MethodDefinition, bool> <>9__17_3;
+            public static readonly AddFillTypeMapsMethodBody.InnerClass InnerInstance = new AddFillTypeMapsMethodBody.InnerClass();
+            public static Func<AssemblyWrapper, IEnumerable<TypeWrapper>> FuncA;
+            public static Func<TypeWrapper, int> FuncB;
+            public static Func<MethodDefinition, bool> FuncC;
+            public static Func<MethodDefinition, bool> FuncD;
+            public static Func<MethodDefinition, bool> FuncE;
+            public static Func<PropertyDefinition, bool> FuncF;
+            public static Func<MethodDefinition, bool> FuncG;
+            public static Func<MethodDefinition, bool> FuncH;
 
-            internal bool <ConstructDictionary>b__15_0(MethodDefinition x)
+            internal bool IsConstructDictionarySpecial(MethodDefinition x)
             {
                 return (((x.Name == ".ctor") && (x.Parameters.Count == 1)) && (x.Parameters[0].ParameterType.FullName == "System.Int32"));
             }
 
-            internal bool <ConstructList>b__16_0(MethodDefinition x)
+            internal bool IsConstructListSpecial(MethodDefinition x)
             {
                 return (((x.Name == ".ctor") && (x.Parameters.Count == 1)) && (x.Parameters[0].ParameterType.FullName == "System.Int32"));
             }
 
-            internal IEnumerable<TypeWrapper> <Execute>b__12_0(AssemblyWrapper x)
+            internal IEnumerable<TypeWrapper> GetExecuteParamA(AssemblyWrapper x)
             {
                 return x.Types;
             }
 
-            internal int <Execute>b__12_1(TypeWrapper x)
+            internal int GetExecuteParamB(TypeWrapper x)
             {
                 return x.Id;
             }
 
-            internal bool <Initialize>b__17_0(MethodDefinition x)
+            internal bool GetInitializeParamA(MethodDefinition x)
             {
                 return (x.Name == "FillTypeMaps");
             }
 
-            internal bool <Initialize>b__17_1(PropertyDefinition x)
+            internal bool GetInitializeParamB(PropertyDefinition x)
             {
                 return (x.Name == "Item");
             }
 
-            internal bool <Initialize>b__17_2(MethodDefinition x)
+            internal bool GetInitializeParamC(MethodDefinition x)
             {
                 return (x.Name == "Add");
             }
 
-            internal bool <Initialize>b__17_3(MethodDefinition x)
+            internal bool GetInitializeParamD(MethodDefinition x)
             {
                 return (((x.Name == "GetTypeFromHandle") && (x.Parameters.Count == 1)) && (x.Parameters[0].ParameterType.FullName == "System.RuntimeTypeHandle"));
             }
