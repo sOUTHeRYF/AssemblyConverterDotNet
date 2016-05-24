@@ -41,7 +41,7 @@
 
         private static bool IsPodStruct(TypeDefinition type)
         {
-            return type.Fields.All<FieldDefinition>((<>c.<>9__8_0 ?? (<>c.<>9__8_0 = new Func<FieldDefinition, bool>(<>c.<>9.<IsPodStruct>b__8_0))));
+            return type.Fields.All<FieldDefinition>((InnerClass.FuncC ?? (InnerClass.FuncC = new Func<FieldDefinition, bool>(InnerClass.InnerInstance.IsIsPodStructSpecial))));
         }
 
         private static MethodDefinition Process(ModuleContext moduleContext, MethodWrapper methodWrapper, int index)
@@ -50,7 +50,7 @@
             MethodReference method = moduleContext.Import(moduleContext.OperationContext.GCHandledObjectsGCHandleToObjectMethod);
             MethodReference reference3 = moduleContext.Import(moduleContext.OperationContext.GCHandledObjectsGCHandleToPinnedArrayObjectMethod);
             MethodReference reference4 = moduleContext.Import(moduleContext.OperationContext.GCHandledObjectsObjectToGCHandleMethod);
-            MethodReference corLibMethod = moduleContext.GetCorLibMethod("System.Runtime.InteropServices.Marshal", <>c.<>9__7_0 ?? (<>c.<>9__7_0 = new Func<MethodDefinition, bool>(<>c.<>9.<Process>b__7_0)));
+            MethodReference corLibMethod = moduleContext.GetCorLibMethod("System.Runtime.InteropServices.Marshal", InnerClass.FuncB ?? (InnerClass.FuncB = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsProcessSpecial)));
             MethodDefinition targetMethod = methodWrapper.TargetMethod;
             MethodDefinition definition2 = new MethodDefinition(string.Format("$Invoke{0}", index), MethodAttributes.CompilerControlled | MethodAttributes.FamANDAssem | MethodAttributes.Family | MethodAttributes.HideBySig | MethodAttributes.Static, corLibType);
             methodWrapper.InvokeMethod = definition2;
@@ -213,7 +213,7 @@
                 this.objectToGCHandleMethod = base.ModuleContext.Import(base.OperationContext.GCHandledObjectsObjectToGCHandleMethod);
                 this.gcHandleToObjectMethod = base.ModuleContext.Import(base.OperationContext.GCHandledObjectsGCHandleToObjectMethod);
                 this.gcHandleToPinnedArrayObjectMethod = base.ModuleContext.Import(base.OperationContext.GCHandledObjectsGCHandleToPinnedArrayObjectMethod);
-                this.ptrToStringUniMethod = base.ModuleContext.GetCorLibMethod("System.Runtime.InteropServices.Marshal", <>c.<>9__6_0 ?? (<>c.<>9__6_0 = new Func<MethodDefinition, bool>(<>c.<>9.<ProcessModule>b__6_0)));
+                this.ptrToStringUniMethod = base.ModuleContext.GetCorLibMethod("System.Runtime.InteropServices.Marshal", InnerClass.FuncA ?? (InnerClass.FuncA = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsProcessModuleSpecial)));
                 Dictionary<TypeDefinition, int> dictionary = new Dictionary<TypeDefinition, int>();
                 foreach (TypeWrapper wrapper2 in assemblyWrapper.Types)
                 {
@@ -263,24 +263,24 @@
         }
 
         [Serializable, CompilerGenerated]
-        private sealed class <>c
+        private sealed class InnerClass
         {
-            public static readonly AddInvokeMethodMethodsStep.<>c <>9 = new AddInvokeMethodMethodsStep.<>c();
-            public static Func<MethodDefinition, bool> <>9__6_0;
-            public static Func<MethodDefinition, bool> <>9__7_0;
-            public static Func<FieldDefinition, bool> <>9__8_0;
+            public static readonly AddInvokeMethodMethodsStep.InnerClass InnerInstance = new AddInvokeMethodMethodsStep.InnerClass();
+            public static Func<MethodDefinition, bool> FuncA;
+            public static Func<MethodDefinition, bool> FuncB;
+            public static Func<FieldDefinition, bool> FuncC;
 
-            internal bool <IsPodStruct>b__8_0(FieldDefinition f)
+            internal bool IsIsPodStructSpecial(FieldDefinition f)
             {
                 return f.FieldType.IsValueType;
             }
 
-            internal bool <Process>b__7_0(MethodDefinition m)
+            internal bool IsProcessSpecial(MethodDefinition m)
             {
                 return ((m.Name == "PtrToStringUni") && (m.Parameters.Count == 1));
             }
 
-            internal bool <ProcessModule>b__6_0(MethodDefinition m)
+            internal bool IsProcessModuleSpecial(MethodDefinition m)
             {
                 return ((m.Name == "PtrToStringUni") && (m.Parameters.Count == 1));
             }

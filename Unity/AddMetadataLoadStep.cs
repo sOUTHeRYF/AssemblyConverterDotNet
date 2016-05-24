@@ -47,7 +47,7 @@
                 iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod(reference6, "get_Assembly"));
             }
             iLProcessor.Emit(OpCodes.Ldstr, "UnityMetadata");
-            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod("System.Reflection.Assembly", <>c.<>9__2_0 ?? (<>c.<>9__2_0 = new Func<MethodDefinition, bool>(<>c.<>9.<AddLoadMethod>b__2_0))));
+            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod("System.Reflection.Assembly", InnerClass.FuncA ?? (InnerClass.FuncA = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsAddLoadMethodSpecial))));
             iLProcessor.EmitStloc(definition2);
             iLProcessor.EmitLdloc(definition2);
             iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod(reference5, "get_Length"));
@@ -63,7 +63,7 @@
             iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod(reference5, "Read"));
             iLProcessor.Emit(OpCodes.Pop);
             iLProcessor.EmitLdloc(definition2);
-            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod(reference5, <>c.<>9__2_1 ?? (<>c.<>9__2_1 = new Func<MethodDefinition, bool>(<>c.<>9.<AddLoadMethod>b__2_1))));
+            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod(reference5, InnerClass.FuncB ?? (InnerClass.FuncB = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsAddLoadMethodSpecialA))));
             iLProcessor.EmitLdloc(definition3);
             iLProcessor.Emit(OpCodes.Call, base.ModuleContext.GetCorLibMethod(reference4, "AllocCoTaskMem"));
             iLProcessor.EmitStloc(definition5);
@@ -71,7 +71,7 @@
             iLProcessor.EmitLdc_I4(0);
             iLProcessor.EmitLdloc(definition5);
             iLProcessor.EmitLdloc(definition3);
-            iLProcessor.Emit(OpCodes.Call, base.ModuleContext.GetCorLibMethod(reference4, <>c.<>9__2_2 ?? (<>c.<>9__2_2 = new Func<MethodDefinition, bool>(<>c.<>9.<AddLoadMethod>b__2_2))));
+            iLProcessor.Emit(OpCodes.Call, base.ModuleContext.GetCorLibMethod(reference4, InnerClass.FuncC ?? (InnerClass.FuncC = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsAddLoadMethodSpecialB))));
             foreach (AssemblyWrapper wrapper in base.MetadataContainer.Assemblies)
             {
                 if (wrapper.GetUnityTypeMethod != null)
@@ -100,24 +100,24 @@
         }
 
         [Serializable, CompilerGenerated]
-        private sealed class <>c
+        private sealed class InnerClass
         {
-            public static readonly AddMetadataLoadStep.<>c <>9 = new AddMetadataLoadStep.<>c();
-            public static Func<MethodDefinition, bool> <>9__2_0;
-            public static Func<MethodDefinition, bool> <>9__2_1;
-            public static Func<MethodDefinition, bool> <>9__2_2;
+            public static readonly AddMetadataLoadStep.InnerClass InnerInstance = new AddMetadataLoadStep.InnerClass();
+            public static Func<MethodDefinition, bool> FuncA;
+            public static Func<MethodDefinition, bool> FuncB;
+            public static Func<MethodDefinition, bool> FuncC;
 
-            internal bool <AddLoadMethod>b__2_0(MethodDefinition m)
+            internal bool IsAddLoadMethodSpecial(MethodDefinition m)
             {
                 return ((m.Name == "GetManifestResourceStream") && (m.Parameters.Count == 1));
             }
 
-            internal bool <AddLoadMethod>b__2_1(MethodDefinition m)
+            internal bool IsAddLoadMethodSpecialA(MethodDefinition m)
             {
                 return ((m.Name == "Dispose") && m.IsPublic);
             }
 
-            internal bool <AddLoadMethod>b__2_2(MethodDefinition m)
+            internal bool IsAddLoadMethodSpecialB(MethodDefinition m)
             {
                 if (m.Name != "Copy")
                 {

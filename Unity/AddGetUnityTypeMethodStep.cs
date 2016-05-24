@@ -31,56 +31,55 @@
             iLProcessor.Emit(OpCodes.Ret);
             for (int i = 0; i < assemblyWrapper.Types.Length; i++)
             {
-                iLProcessor.Emit(OpCodes.Newobj, assemblyWrapper.Types[i].UnityType.Methods.Single<MethodDefinition>(<>c.<>9__3_0 ?? (<>c.<>9__3_0 = new Func<MethodDefinition, bool>(<>c.<>9.<AddGetUnityTypeMethod>b__3_0))));
-                targets[i] = instructions.Last<Instruction>();
-                iLProcessor.Emit(OpCodes.Call, this.allocMethod);
-                iLProcessor.Emit(OpCodes.Call, this.toIntPtrMethod);
-                iLProcessor.Emit(OpCodes.Ret);
-            }
+                iLProcessor.Emit(OpCodes.Newobj, assemblyWrapper.Types[i].UnityType.Methods.Single<MethodDefinition>(InnerClass.FuncC ?? (InnerClass.FuncC = new Func<MethodDefinition, bool>(InnerClass.InnerClassInstance.IsAddGetUnityTypeMethodSpecial))));
+            targets[i] = instructions.Last<Instruction>();
+            iLProcessor.Emit(OpCodes.Call, this.allocMethod);
+            iLProcessor.Emit(OpCodes.Call, this.toIntPtrMethod);
+            iLProcessor.Emit(OpCodes.Ret);
+             }
             return item;
         }
 
-        protected override void ProcessModule()
+    protected override void ProcessModule()
+    {
+        AssemblyWrapper assemblyWrapper = base.ModuleContext.GetAssemblyWrapper();
+        if (assemblyWrapper != null)
         {
-            AssemblyWrapper assemblyWrapper = base.ModuleContext.GetAssemblyWrapper();
-            if (assemblyWrapper != null)
+            this.allocMethod = base.ModuleContext.GetCorLibMethod("System.Runtime.InteropServices.GCHandle", InnerClass.FuncA ?? (InnerClass.FuncA = new Func<MethodDefinition, bool>(InnerClass.InnerClassInstance.IsProcessModuleSpecial)));
+            this.toIntPtrMethod = base.ModuleContext.GetCorLibMethod("System.Runtime.InteropServices.GCHandle", "ToIntPtr");
+            TypeDefinition type = base.AddStaticClass("UnityEngine.Internal", "$Metadata");
+            assemblyWrapper.GetUnityTypeMethod = this.AddGetUnityTypeMethod(type, assemblyWrapper);
+            if (base.IsUnityEngine)
             {
-                this.allocMethod = base.ModuleContext.GetCorLibMethod("System.Runtime.InteropServices.GCHandle", <>c.<>9__2_0 ?? (<>c.<>9__2_0 = new Func<MethodDefinition, bool>(<>c.<>9.<ProcessModule>b__2_0)));
-                this.toIntPtrMethod = base.ModuleContext.GetCorLibMethod("System.Runtime.InteropServices.GCHandle", "ToIntPtr");
-                TypeDefinition type = base.AddStaticClass("UnityEngine.Internal", "$Metadata");
-                assemblyWrapper.GetUnityTypeMethod = this.AddGetUnityTypeMethod(type, assemblyWrapper);
-                if (base.IsUnityEngine)
-                {
-                    foreach (AssemblyWrapper wrapper2 in base.MetadataContainer.Assemblies.Where<AssemblyWrapper>(<>c.<>9__2_1 ?? (<>c.<>9__2_1 = new Func<AssemblyWrapper, bool>(<>c.<>9.<ProcessModule>b__2_1))))
+                foreach (AssemblyWrapper wrapper2 in base.MetadataContainer.Assemblies.Where<AssemblyWrapper>(InnerClass.FuncB ?? (InnerClass.FuncB = new Func<AssemblyWrapper, bool>(InnerClass.InnerClassInstance.IsProcessModuleSpecialB))))
                     {
-                        TypeDefinition definition2 = base.AddStaticClass("UnityEngine.Internal", string.Format("$Metadata{0}", wrapper2.SystemAssemblyId));
-                        wrapper2.GetUnityTypeMethod = this.AddGetUnityTypeMethod(definition2, wrapper2);
-                    }
+                    TypeDefinition definition2 = base.AddStaticClass("UnityEngine.Internal", string.Format("$Metadata{0}", wrapper2.SystemAssemblyId));
+                    wrapper2.GetUnityTypeMethod = this.AddGetUnityTypeMethod(definition2, wrapper2);
                 }
-                this.allocMethod = null;
-                this.toIntPtrMethod = null;
             }
+            this.allocMethod = null;
+            this.toIntPtrMethod = null;
         }
-
+    }
         [Serializable, CompilerGenerated]
-        private sealed class <>c
+        private sealed class InnerClass
         {
-            public static readonly AddGetUnityTypeMethodStep.<>c <>9 = new AddGetUnityTypeMethodStep.<>c();
-            public static Func<MethodDefinition, bool> <>9__2_0;
-            public static Func<AssemblyWrapper, bool> <>9__2_1;
-            public static Func<MethodDefinition, bool> <>9__3_0;
+            public static readonly AddGetUnityTypeMethodStep.InnerClass InnerClassInstance = new AddGetUnityTypeMethodStep.InnerClass();
+            public static Func<MethodDefinition, bool> FuncA;
+            public static Func<AssemblyWrapper, bool> FuncB;
+            public static Func<MethodDefinition, bool> FuncC;
 
-            internal bool <AddGetUnityTypeMethod>b__3_0(MethodDefinition m)
+            internal bool IsAddGetUnityTypeMethodSpecial(MethodDefinition m)
             {
                 return (m.Name == ".ctor");
             }
 
-            internal bool <ProcessModule>b__2_0(MethodDefinition m)
+            internal bool IsProcessModuleSpecial(MethodDefinition m)
             {
                 return ((m.Name == "Alloc") && (m.Parameters.Count == 1));
             }
 
-            internal bool <ProcessModule>b__2_1(AssemblyWrapper a)
+            internal bool IsProcessModuleSpecialB(AssemblyWrapper a)
             {
                 return a.System;
             }
