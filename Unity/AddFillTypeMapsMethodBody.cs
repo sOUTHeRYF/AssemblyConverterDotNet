@@ -110,10 +110,10 @@
             return item;
         }
 
-        [IteratorStateMachine(typeof(<GroupItemsInChunks>d__20))]
-        private static IEnumerable<IEnumerable<T>> GroupItemsInChunks<T>(IEnumerable<T> allTypes, int chunkSize)
+      //  [IteratorStateMachine(typeof(GroupItemsInChunksInnerClass<T>))]
+        private static IEnumerable<IEnumerable<T>> GroupItemsInChunks<T>(IEnumerable<T> paramAllTypes, int paramChunkSize)
         {
-            return new <GroupItemsInChunks>d__20<T>(-2) { <>3__allTypes = allTypes, <>3__chunkSize = chunkSize };
+            return new GroupItemsInChunksInnerClass<T>(-2) { AllTypes = paramAllTypes, ChunkSize = paramChunkSize };
         }
 
         private MethodReference Import(MethodReference method)
@@ -212,29 +212,30 @@
         }
 
         [CompilerGenerated]
-        private sealed class <GroupItemsInChunks>d__20<T> : IEnumerable<IEnumerable<T>>, IEnumerable, IEnumerator<IEnumerable<T>>, IDisposable, IEnumerator
+        private sealed class GroupItemsInChunksInnerClass<T> : IEnumerable<IEnumerable<T>>, IEnumerable, IEnumerator<IEnumerable<T>>, IDisposable, IEnumerator
         {
-            private int <>1__state;
-            private IEnumerable<T> <>2__current;
-            public IEnumerable<T> <>3__allTypes;
-            public int <>3__chunkSize;
-            private int <>l__initialThreadId;
+            private int state;
+            private IEnumerable<T> current;
+            public IEnumerable<T> AllTypes;
+            public int ChunkSize;
+            private int initialThreadId;
             private IEnumerable<T> allTypes;
             private int chunkSize;
 
             [DebuggerHidden]
-            public <GroupItemsInChunks>d__20(int <>1__state)
+            public GroupItemsInChunksInnerClass(int paramState)
             {
-                this.<>1__state = <>1__state;
-                this.<>l__initialThreadId = Environment.CurrentManagedThreadId;
+                this.state = paramState;
+                this.initialThreadId = Environment.CurrentManagedThreadId;
             }
 
             private bool MoveNext()
             {
-                int num = this.<>1__state;
+                int num = this.state;
+                bool result = false;
                 if (num == 0)
                 {
-                    this.<>1__state = -1;
+                    this.state = -1;
                     while (this.allTypes.Any<T>())
                     {
                         int num2 = this.allTypes.Count<T>();
@@ -242,11 +243,11 @@
                         {
                             this.chunkSize = num2;
                         }
-                        this.<>2__current = this.allTypes.Take<T>(this.chunkSize);
-                        this.<>1__state = 1;
+                        this.current = this.allTypes.Take<T>(this.chunkSize);
+                        this.state = 1;
                         return true;
                     Label_0055:
-                        this.<>1__state = -1;
+                        this.state = -1;
                         this.allTypes = this.allTypes.Skip<T>(this.chunkSize);
                     }
                     return false;
@@ -261,18 +262,18 @@
             [DebuggerHidden]
             IEnumerator<IEnumerable<T>> IEnumerable<IEnumerable<T>>.GetEnumerator()
             {
-                AddFillTypeMapsMethodBody.<GroupItemsInChunks>d__20<T> d__;
-                if ((this.<>1__state == -2) && (this.<>l__initialThreadId == Environment.CurrentManagedThreadId))
+                AddFillTypeMapsMethodBody.GroupItemsInChunksInnerClass<T> d__;
+                if ((this.state == -2) && (this.initialThreadId == Environment.CurrentManagedThreadId))
                 {
-                    this.<>1__state = 0;
-                    d__ = (AddFillTypeMapsMethodBody.<GroupItemsInChunks>d__20<T>) this;
+                    this.state = 0;
+                    d__ = (AddFillTypeMapsMethodBody.GroupItemsInChunksInnerClass<T>) this;
                 }
                 else
                 {
-                    d__ = new AddFillTypeMapsMethodBody.<GroupItemsInChunks>d__20<T>(0);
+                    d__ = new AddFillTypeMapsMethodBody.GroupItemsInChunksInnerClass<T>(0);
                 }
-                d__.allTypes = this.<>3__allTypes;
-                d__.chunkSize = this.<>3__chunkSize;
+                d__.allTypes = this.AllTypes;
+                d__.chunkSize = this.ChunkSize;
                 return d__;
             }
 
@@ -298,7 +299,7 @@
                 [DebuggerHidden]
                 get
                 {
-                    return this.<>2__current;
+                    return this.current;
                 }
             }
 
@@ -307,7 +308,7 @@
                 [DebuggerHidden]
                 get
                 {
-                    return this.<>2__current;
+                    return this.current;
                 }
             }
         }
