@@ -91,12 +91,12 @@
         public void SetWinRTBridge(AssemblyDefinition assembly)
         {
             TypeDefinition type = assembly.MainModule.GetType("WinRTBridge", "GCHandledObjects");
-            this.GCHandledObjectsObjectToGCHandleMethod = type.Methods.Single<MethodDefinition>(<>c.<>9__84_0 ?? (<>c.<>9__84_0 = new Func<MethodDefinition, bool>(<>c.<>9.<SetWinRTBridge>b__84_0)));
-            this.GCHandledObjectsObjectToGCHandleRetainMethod = type.Methods.Single<MethodDefinition>(<>c.<>9__84_1 ?? (<>c.<>9__84_1 = new Func<MethodDefinition, bool>(<>c.<>9.<SetWinRTBridge>b__84_1)));
-            this.GCHandledObjectsGCHandleToObjectMethod = type.Methods.Single<MethodDefinition>(<>c.<>9__84_2 ?? (<>c.<>9__84_2 = new Func<MethodDefinition, bool>(<>c.<>9.<SetWinRTBridge>b__84_2)));
-            this.GCHandledObjectsGCHandleToPinnedArrayObjectMethod = type.Methods.Single<MethodDefinition>(<>c.<>9__84_3 ?? (<>c.<>9__84_3 = new Func<MethodDefinition, bool>(<>c.<>9.<SetWinRTBridge>b__84_3)));
+            this.GCHandledObjectsObjectToGCHandleMethod = type.Methods.Single<MethodDefinition>(InnerClass.FuncA ?? (InnerClass.FuncA = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.SetWinRTBridgeA)));
+            this.GCHandledObjectsObjectToGCHandleRetainMethod = type.Methods.Single<MethodDefinition>(InnerClass.FuncB ?? (InnerClass.FuncB = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.SetWinRTBridgeB)));
+            this.GCHandledObjectsGCHandleToObjectMethod = type.Methods.Single<MethodDefinition>(InnerClass.FuncC ?? (InnerClass.FuncC = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.SetWinRTBridgeC)));
+            this.GCHandledObjectsGCHandleToPinnedArrayObjectMethod = type.Methods.Single<MethodDefinition>(InnerClass.FuncD ?? (InnerClass.FuncD = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.SetWinRTBridgeD)));
             TypeDefinition definition2 = assembly.MainModule.GetType("WinRTBridge", "TypeInformation");
-            this.TypeInformationGetTypeFromTypeIdMethod = definition2.Methods.Single<MethodDefinition>(<>c.<>9__84_4 ?? (<>c.<>9__84_4 = new Func<MethodDefinition, bool>(<>c.<>9.<SetWinRTBridge>b__84_4)));
+            this.TypeInformationGetTypeFromTypeIdMethod = definition2.Methods.Single<MethodDefinition>(InnerClass.FuncE ?? (InnerClass.FuncE = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.SetWinRTBridgeE)));
             this.TypeInformationGetTypeFromTypeIdMethod.ReturnType = this.TypeType;
         }
 
@@ -165,36 +165,36 @@
         public ModuleContext UnityEngineModuleContext { get; private set; }
 
         [Serializable, CompilerGenerated]
-        private sealed class <>c
+        private sealed class InnerClass
         {
-            public static readonly OperationContext.<>c <>9 = new OperationContext.<>c();
-            public static Func<MethodDefinition, bool> <>9__84_0;
-            public static Func<MethodDefinition, bool> <>9__84_1;
-            public static Func<MethodDefinition, bool> <>9__84_2;
-            public static Func<MethodDefinition, bool> <>9__84_3;
-            public static Func<MethodDefinition, bool> <>9__84_4;
+            public static readonly OperationContext.InnerClass InnerInstance = new OperationContext.InnerClass();
+            public static Func<MethodDefinition, bool> FuncA;
+            public static Func<MethodDefinition, bool> FuncB;
+            public static Func<MethodDefinition, bool> FuncC;
+            public static Func<MethodDefinition, bool> FuncD;
+            public static Func<MethodDefinition, bool> FuncE;
 
-            internal bool <SetWinRTBridge>b__84_0(MethodDefinition m)
+            internal bool SetWinRTBridgeA(MethodDefinition m)
             {
                 return (m.Name == "ObjectToGCHandle");
             }
 
-            internal bool <SetWinRTBridge>b__84_1(MethodDefinition m)
+            internal bool SetWinRTBridgeB(MethodDefinition m)
             {
                 return (m.Name == "ObjectToGCHandleRetain");
             }
 
-            internal bool <SetWinRTBridge>b__84_2(MethodDefinition m)
+            internal bool SetWinRTBridgeC(MethodDefinition m)
             {
                 return (m.Name == "GCHandleToObject");
             }
 
-            internal bool <SetWinRTBridge>b__84_3(MethodDefinition m)
+            internal bool SetWinRTBridgeD(MethodDefinition m)
             {
                 return (m.Name == "GCHandleToPinnedArrayObject");
             }
 
-            internal bool <SetWinRTBridge>b__84_4(MethodDefinition m)
+            internal bool SetWinRTBridgeE(MethodDefinition m)
             {
                 return (m.Name == "GetTypeFromTypeId");
             }
