@@ -47,7 +47,7 @@
             MethodBody body = item.Body;
             body.Variables.Add(definition3);
             body.InitLocals = true;
-            MethodDefinition method = this.unityTypeType.Methods.Single<MethodDefinition>(<>c.<>9__29_0 ?? (<>c.<>9__29_0 = new Func<MethodDefinition, bool>(<>c.<>9.<AddCreateInstanceMethod>b__29_0)));
+            MethodDefinition method = this.unityTypeType.Methods.Single<MethodDefinition>(InnerClass.FuncB ?? (InnerClass.FuncB = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsAddCreateInstanceMethodSpecial)));
             ILProcessor iLProcessor = body.GetILProcessor();
             iLProcessor.EmitLdarg(definition2);
             iLProcessor.Emit(OpCodes.Call, this.gcHandleFromIntPtrMethod);
@@ -148,7 +148,7 @@
             iLProcessor.Emit(OpCodes.Ldnull);
             iLProcessor.Emit(OpCodes.Ldsfld, base.ModuleContext.GetCorLibField(this.typeType, "EmptyTypes"));
             iLProcessor.Emit(OpCodes.Ldnull);
-            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod(this.typeType, <>c.<>9__30_0 ?? (<>c.<>9__30_0 = new Func<MethodDefinition, bool>(<>c.<>9.<AddInvokeDefaultConstructorMethod>b__30_0))));
+            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod(this.typeType, InnerClass.FuncC ?? (InnerClass.FuncC = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsAddInvokeDefaultConstructorMethodSpecial))));
             iLProcessor.EmitStloc(definition5);
             iLProcessor.EmitLdloc(definition5);
             Instruction instruction2 = Utility.CreateLdc_I4(-1);
@@ -156,7 +156,7 @@
             iLProcessor.EmitLdloc(definition5);
             iLProcessor.EmitLdloc(definition4);
             iLProcessor.Emit(OpCodes.Ldnull);
-            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod("System.Reflection.MethodBase", <>c.<>9__30_1 ?? (<>c.<>9__30_1 = new Func<MethodDefinition, bool>(<>c.<>9.<AddInvokeDefaultConstructorMethod>b__30_1))));
+            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod("System.Reflection.MethodBase", InnerClass.FuncD ?? (InnerClass.FuncD = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsAddCreateInstanceMethodSpecialA))));
             iLProcessor.Emit(OpCodes.Pop);
             iLProcessor.Append(instruction2);
             iLProcessor.Emit(OpCodes.Conv_I8);
@@ -542,7 +542,7 @@
             iLProcessor.Emit(OpCodes.Calli, site);
             iLProcessor.EmitStloc(definition5);
             iLProcessor.Emit(OpCodes.Leave_S, target);
-            MethodDefinition method = base.Module.GetType("UnityEngine.MonoBehaviour").Methods.Single<MethodDefinition>(<>c.<>9__32_0 ?? (<>c.<>9__32_0 = new Func<MethodDefinition, bool>(<>c.<>9.<AddInvokeMethodMethod>b__32_0)));
+            MethodDefinition method = base.Module.GetType("UnityEngine.MonoBehaviour").Methods.Single<MethodDefinition>(InnerClass.FuncJ ?? (InnerClass.FuncJ = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsAddInvokeMethodMethodSpecial)));
             iLProcessor.Emit(OpCodes.Call, method);
             handler.TryStart = body.Instructions.First<Instruction>();
             handler.TryEnd = body.Instructions.Last<Instruction>();
@@ -600,11 +600,11 @@
             iLProcessor.EmitLdc_I4(0);
             iLProcessor.EmitLdarg(definition3);
             iLProcessor.Emit(OpCodes.Stelem_Ref);
-            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod(this.typeType, <>c.<>9__34_0 ?? (<>c.<>9__34_0 = new Func<MethodDefinition, bool>(<>c.<>9.<AddInvokeMethodReflectionMethod>b__34_0))));
+            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod(this.typeType, InnerClass.FuncN ?? (InnerClass.FuncN = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsAddInvokeMethodReflectionMethodSpecial))));
             iLProcessor.Emit(OpCodes.Call, this.objectToGCHandleMethod);
             iLProcessor.EmitStloc(definition5);
             iLProcessor.Emit(OpCodes.Leave_S, target);
-            MethodDefinition method = base.Module.GetType("UnityEngine.MonoBehaviour").Methods.Single<MethodDefinition>(<>c.<>9__34_1 ?? (<>c.<>9__34_1 = new Func<MethodDefinition, bool>(<>c.<>9.<AddInvokeMethodReflectionMethod>b__34_1)));
+            MethodDefinition method = base.Module.GetType("UnityEngine.MonoBehaviour").Methods.Single<MethodDefinition>(InnerClass.FuncO ?? (InnerClass.FuncO = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsAddInvokeMethodReflectionMethodSpecialA)));
             iLProcessor.Emit(OpCodes.Call, method);
             handler.TryStart = body.Instructions.First<Instruction>();
             handler.TryEnd = body.Instructions.Last<Instruction>();
@@ -812,7 +812,7 @@
             body.Variables.Add(definition3);
             body.Variables.Add(definition4);
             body.Variables.Add(definition5);
-            MethodReference corLibMethod = base.ModuleContext.GetCorLibMethod(this.intPtrType, <>c.<>9__33_0 ?? (<>c.<>9__33_0 = new Func<MethodDefinition, bool>(<>c.<>9.<AddUtf8ToStringMethod>b__33_0)));
+            MethodReference corLibMethod = base.ModuleContext.GetCorLibMethod(this.intPtrType, InnerClass.FuncK ?? (InnerClass.FuncK = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsAddUtf8ToStringMethodSpecial)));
             ILProcessor iLProcessor = body.GetILProcessor();
             iLProcessor.EmitLdarg(definition2);
             iLProcessor.Emit(OpCodes.Call, corLibMethod);
@@ -839,12 +839,12 @@
             iLProcessor.EmitLdloc(definition5);
             iLProcessor.EmitLdc_I4(0);
             iLProcessor.EmitLdloc(definition4);
-            iLProcessor.Emit(OpCodes.Call, base.ModuleContext.GetCorLibMethod("System.Runtime.InteropServices.Marshal", <>c.<>9__33_1 ?? (<>c.<>9__33_1 = new Func<MethodDefinition, bool>(<>c.<>9.<AddUtf8ToStringMethod>b__33_1))));
+            iLProcessor.Emit(OpCodes.Call, base.ModuleContext.GetCorLibMethod("System.Runtime.InteropServices.Marshal", InnerClass.FuncL ?? (InnerClass.FuncL = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsAddUtf8ToStringMethodSpecialA))));
             iLProcessor.Emit(OpCodes.Call, base.ModuleContext.GetCorLibMethod("System.Text.Encoding", "get_UTF8"));
             iLProcessor.EmitLdloc(definition5);
             iLProcessor.EmitLdc_I4(0);
             iLProcessor.EmitLdloc(definition4);
-            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod("System.Text.Encoding", <>c.<>9__33_2 ?? (<>c.<>9__33_2 = new Func<MethodDefinition, bool>(<>c.<>9.<AddUtf8ToStringMethod>b__33_2))));
+            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod("System.Text.Encoding", InnerClass.FuncM ?? (InnerClass.FuncM = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsAddUtf8ToStringMethodSpecialB))));
             iLProcessor.Emit(OpCodes.Ret);
             return item;
         }
@@ -875,7 +875,7 @@
                 this.gcHandleToObjectMethod = base.ModuleContext.Import(base.OperationContext.GCHandledObjectsGCHandleToObjectMethod);
                 this.objectToGCHandleMethod = base.ModuleContext.Import(base.OperationContext.GCHandledObjectsObjectToGCHandleMethod);
                 this.gcHandleType = base.ModuleContext.GetCorLibType("System.Runtime.InteropServices.GCHandle");
-                this.gcHandleExplicitCastMethod = base.ModuleContext.GetCorLibMethod(this.gcHandleType, <>c.<>9__27_0 ?? (<>c.<>9__27_0 = new Func<MethodDefinition, bool>(<>c.<>9.<ProcessModule>b__27_0)));
+                this.gcHandleExplicitCastMethod = base.ModuleContext.GetCorLibMethod(this.gcHandleType, InnerClass.FuncA ?? (InnerClass.FuncA = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsProcessModuleSpecial)));
                 this.gcHandleFromIntPtrMethod = base.ModuleContext.GetCorLibMethod(this.gcHandleType, "FromIntPtr");
                 this.gcHandleGetTargetMethod = base.ModuleContext.GetCorLibMethod(this.gcHandleType, "get_Target");
                 this.unityTypeType = base.Module.GetType("UnityEngine.Internal", "$UnityType");
@@ -989,27 +989,27 @@
             iLProcessor.EmitLdloc(definition4);
             iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod(this.typeInfoType, "IsAssignableFrom"));
             iLProcessor.Emit(OpCodes.Ret);
-            var typeArray1 = new [10];
+            var typeArray1 = new InnerStruct[10];
             TypeReference[] referenceArray1 = new TypeReference[] { this.charType, this.int16Type, this.uint16Type, this.int32Type, this.uint32Type, this.int64Type, this.uint64Type, this.singleType, this.doubleType };
-            typeArray1[0] = new { FromType = this.byteType, ToTypes = referenceArray1 };
+            typeArray1[0] = new InnerStruct { FromType = this.byteType, ToTypes = referenceArray1 };
             TypeReference[] referenceArray2 = new TypeReference[] { this.int16Type, this.int32Type, this.int64Type, this.singleType, this.doubleType };
-            typeArray1[1] = new { FromType = this.sbyteType, ToTypes = referenceArray2 };
+            typeArray1[1] = new InnerStruct { FromType = this.sbyteType, ToTypes = referenceArray2 };
             TypeReference[] referenceArray3 = new TypeReference[] { this.uint16Type, this.int32Type, this.uint32Type, this.int64Type, this.uint64Type, this.singleType, this.doubleType };
-            typeArray1[2] = new { FromType = this.charType, ToTypes = referenceArray3 };
+            typeArray1[2] = new InnerStruct { FromType = this.charType, ToTypes = referenceArray3 };
             TypeReference[] referenceArray4 = new TypeReference[] { this.int32Type, this.int64Type, this.singleType, this.doubleType };
-            typeArray1[3] = new { FromType = this.int16Type, ToTypes = referenceArray4 };
+            typeArray1[3] = new InnerStruct { FromType = this.int16Type, ToTypes = referenceArray4 };
             TypeReference[] referenceArray5 = new TypeReference[] { this.int32Type, this.uint32Type, this.int64Type, this.uint64Type, this.singleType, this.doubleType };
-            typeArray1[4] = new { FromType = this.uint16Type, ToTypes = referenceArray5 };
+            typeArray1[4] = new InnerStruct { FromType = this.uint16Type, ToTypes = referenceArray5 };
             TypeReference[] referenceArray6 = new TypeReference[] { this.int64Type, this.singleType, this.doubleType };
-            typeArray1[5] = new { FromType = this.int32Type, ToTypes = referenceArray6 };
+            typeArray1[5] = new InnerStruct { FromType = this.int32Type, ToTypes = referenceArray6 };
             TypeReference[] referenceArray7 = new TypeReference[] { this.int64Type, this.uint64Type, this.singleType, this.doubleType };
-            typeArray1[6] = new { FromType = this.uint32Type, ToTypes = referenceArray7 };
+            typeArray1[6] = new InnerStruct { FromType = this.uint32Type, ToTypes = referenceArray7 };
             TypeReference[] referenceArray8 = new TypeReference[] { this.singleType, this.doubleType };
-            typeArray1[7] = new { FromType = this.int64Type, ToTypes = referenceArray8 };
+            typeArray1[7] = new InnerStruct { FromType = this.int64Type, ToTypes = referenceArray8 };
             TypeReference[] referenceArray9 = new TypeReference[] { this.singleType, this.doubleType };
-            typeArray1[8] = new { FromType = this.uint64Type, ToTypes = referenceArray9 };
+            typeArray1[8] = new InnerStruct { FromType = this.uint64Type, ToTypes = referenceArray9 };
             TypeReference[] referenceArray10 = new TypeReference[] { this.doubleType };
-            typeArray1[9] = new { FromType = this.singleType, ToTypes = referenceArray10 };
+            typeArray1[9] = new InnerStruct { FromType = this.singleType, ToTypes = referenceArray10 };
             Instruction instruction = null;
             foreach (var type2 in typeArray1)
             {
@@ -1068,13 +1068,13 @@
             MethodBody body = item.Body;
             body.InitLocals = true;
             ModuleDefinition corLib = base.OperationContext.CorLib;
-            TypeDefinition definition5 = corLib.ExportedTypes.Single<ExportedType>((<>c.<>9__36_0 ?? (<>c.<>9__36_0 = new Func<ExportedType, bool>(<>c.<>9.<WSA_AddGetMethodMethod>b__36_0)))).Resolve();
-            TypeDefinition definition6 = corLib.ExportedTypes.Single<ExportedType>((<>c.<>9__36_1 ?? (<>c.<>9__36_1 = new Func<ExportedType, bool>(<>c.<>9.<WSA_AddGetMethodMethod>b__36_1)))).Resolve();
-            TypeDefinition definition7 = corLib.ExportedTypes.Single<ExportedType>((<>c.<>9__36_2 ?? (<>c.<>9__36_2 = new Func<ExportedType, bool>(<>c.<>9.<WSA_AddGetMethodMethod>b__36_2)))).Resolve();
-            TypeDefinition definition8 = corLib.ExportedTypes.Single<ExportedType>((<>c.<>9__36_3 ?? (<>c.<>9__36_3 = new Func<ExportedType, bool>(<>c.<>9.<WSA_AddGetMethodMethod>b__36_3)))).Resolve();
-            TypeDefinition definition9 = corLib.ExportedTypes.Single<ExportedType>((<>c.<>9__36_4 ?? (<>c.<>9__36_4 = new Func<ExportedType, bool>(<>c.<>9.<WSA_AddGetMethodMethod>b__36_4)))).Resolve();
+            TypeDefinition definition5 = corLib.ExportedTypes.Single<ExportedType>((InnerClass.FuncQ ?? (InnerClass.FuncQ = new Func<ExportedType, bool>(InnerClass.InnerInstance.IsWSA_AddGetMethodMethodSpecialH)))).Resolve();
+            TypeDefinition definition6 = corLib.ExportedTypes.Single<ExportedType>((InnerClass.FuncR ?? (InnerClass.FuncR = new Func<ExportedType, bool>(InnerClass.InnerInstance.IsWSA_AddGetMethodMethodSpecialG)))).Resolve();
+            TypeDefinition definition7 = corLib.ExportedTypes.Single<ExportedType>((InnerClass.FuncS ?? (InnerClass.FuncS = new Func<ExportedType, bool>(InnerClass.InnerInstance.IsWSA_AddGetMethodMethodSpecialF)))).Resolve();
+            TypeDefinition definition8 = corLib.ExportedTypes.Single<ExportedType>((InnerClass.FuncT ?? (InnerClass.FuncT = new Func<ExportedType, bool>(InnerClass.InnerInstance.IsWSA_AddGetMethodMethodSpecialE)))).Resolve();
+            TypeDefinition definition9 = corLib.ExportedTypes.Single<ExportedType>((InnerClass.FuncU ?? (InnerClass.FuncU = new Func<ExportedType, bool>(InnerClass.InnerInstance.IsWSA_AddGetMethodMethodSpecialD)))).Resolve();
             TypeReference[] arguments = new TypeReference[] { definition8 };
-            MethodReference method = definition6.Methods.Single<MethodDefinition>((<>c.<>9__36_5 ?? (<>c.<>9__36_5 = new Func<MethodDefinition, bool>(<>c.<>9.<WSA_AddGetMethodMethod>b__36_5)))).MakeGenericMethod(arguments);
+            MethodReference method = definition6.Methods.Single<MethodDefinition>((InnerClass.FuncV ?? (InnerClass.FuncV = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsWSA_AddGetMethodMethodSpecialC)))).MakeGenericMethod(arguments);
             VariableDefinition definition10 = new VariableDefinition("typeInfo", base.ModuleContext.Import(definition5));
             TypeReference[] referenceArray2 = new TypeReference[] { definition8 };
             VariableDefinition definition11 = new VariableDefinition("enumerator", base.ModuleContext.Import(definition7.MakeGenericType(referenceArray2)));
@@ -1099,7 +1099,7 @@
             Instruction instruction = Utility.CreateLdloc(definition11);
             iLProcessor.Append(instruction);
             TypeReference[] referenceArray3 = new TypeReference[] { definition8 };
-            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.Import(definition7.Methods.Single<MethodDefinition>((<>c.<>9__36_6 ?? (<>c.<>9__36_6 = new Func<MethodDefinition, bool>(<>c.<>9.<WSA_AddGetMethodMethod>b__36_6)))).MakeGenericMethod(referenceArray3)));
+            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.Import(definition7.Methods.Single<MethodDefinition>((InnerClass.FuncW ?? (InnerClass.FuncW = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsWSA_AddGetMethodMethodSpecialB)))).MakeGenericMethod(referenceArray3)));
             iLProcessor.EmitStloc(definition12);
             iLProcessor.EmitLdloc(definition12);
             iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod("System.Reflection.MemberInfo", "get_Name"));
@@ -1147,8 +1147,8 @@
             iLProcessor.EmitLdc_I4(0);
             iLProcessor.EmitLdarg(definition3);
             iLProcessor.Emit(OpCodes.Stelem_Ref);
-            iLProcessor.Emit(OpCodes.Call, base.ModuleContext.GetCorLibMethod(this.stringType, <>c.<>9__36_7 ?? (<>c.<>9__36_7 = new Func<MethodDefinition, bool>(<>c.<>9.<WSA_AddGetMethodMethod>b__36_7))));
-            iLProcessor.Emit(OpCodes.Newobj, base.ModuleContext.GetCorLibMethod("System.Exception", <>c.<>9__36_8 ?? (<>c.<>9__36_8 = new Func<MethodDefinition, bool>(<>c.<>9.<WSA_AddGetMethodMethod>b__36_8))));
+            iLProcessor.Emit(OpCodes.Call, base.ModuleContext.GetCorLibMethod(this.stringType, InnerClass.FuncX ?? (InnerClass.FuncX = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsWSA_AddGetMethodMethodSpecialA))));
+            iLProcessor.Emit(OpCodes.Newobj, base.ModuleContext.GetCorLibMethod("System.Exception", InnerClass.FuncY ?? (InnerClass.FuncY = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsWSA_AddGetMethodMethodSpecial))));
             iLProcessor.Emit(OpCodes.Throw);
             return item;
         }
@@ -1162,11 +1162,11 @@
             MethodBody body = item.Body;
             body.InitLocals = true;
             ModuleDefinition corLib = base.OperationContext.CorLib;
-            TypeDefinition definition3 = corLib.ExportedTypes.Single<ExportedType>((<>c.<>9__31_0 ?? (<>c.<>9__31_0 = new Func<ExportedType, bool>(<>c.<>9.<WSA_AddInvokeDefaultConstructorMethod>b__31_0)))).Resolve();
-            TypeDefinition definition4 = corLib.ExportedTypes.Single<ExportedType>((<>c.<>9__31_1 ?? (<>c.<>9__31_1 = new Func<ExportedType, bool>(<>c.<>9.<WSA_AddInvokeDefaultConstructorMethod>b__31_1)))).Resolve();
-            TypeDefinition definition5 = corLib.ExportedTypes.Single<ExportedType>((<>c.<>9__31_2 ?? (<>c.<>9__31_2 = new Func<ExportedType, bool>(<>c.<>9.<WSA_AddInvokeDefaultConstructorMethod>b__31_2)))).Resolve();
+            TypeDefinition definition3 = corLib.ExportedTypes.Single<ExportedType>((InnerClass.FuncE ?? (InnerClass.FuncE = new Func<ExportedType, bool>(InnerClass.InnerInstance.IsWSA_AddInvokeDefaultConstructorMethodSpecialD)))).Resolve();
+            TypeDefinition definition4 = corLib.ExportedTypes.Single<ExportedType>((InnerClass.FuncF ?? (InnerClass.FuncF = new Func<ExportedType, bool>(InnerClass.InnerInstance.IsWSA_AddInvokeDefaultConstructorMethodSpecialC)))).Resolve();
+            TypeDefinition definition5 = corLib.ExportedTypes.Single<ExportedType>((InnerClass.FuncG ?? (InnerClass.FuncG = new Func<ExportedType, bool>(InnerClass.InnerInstance.IsWSA_AddInvokeDefaultConstructorMethodSpecialB)))).Resolve();
             TypeReference[] arguments = new TypeReference[] { definition5 };
-            MethodReference method = definition3.Methods.Single<MethodDefinition>((<>c.<>9__31_3 ?? (<>c.<>9__31_3 = new Func<MethodDefinition, bool>(<>c.<>9.<WSA_AddInvokeDefaultConstructorMethod>b__31_3)))).MakeGenericMethod(arguments);
+            MethodReference method = definition3.Methods.Single<MethodDefinition>((InnerClass.FuncH ?? (InnerClass.FuncH = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsWSA_AddInvokeDefaultConstructorMethodSpecialA)))).MakeGenericMethod(arguments);
             VariableDefinition definition6 = new VariableDefinition("result", this.int64Type);
             VariableDefinition definition7 = new VariableDefinition("target", this.objectType);
             TypeReference[] referenceArray2 = new TypeReference[] { definition5 };
@@ -1196,7 +1196,7 @@
             Instruction instruction = Utility.CreateLdloc(definition8);
             iLProcessor.Append(instruction);
             TypeReference[] referenceArray3 = new TypeReference[] { definition5 };
-            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.Import(definition4.Methods.Single<MethodDefinition>((<>c.<>9__31_4 ?? (<>c.<>9__31_4 = new Func<MethodDefinition, bool>(<>c.<>9.<WSA_AddInvokeDefaultConstructorMethod>b__31_4)))).MakeGenericMethod(referenceArray3)));
+            iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.Import(definition4.Methods.Single<MethodDefinition>((InnerClass.FuncI ?? (InnerClass.FuncI = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsWSA_AddInvokeDefaultConstructorMethodSpecial)))).MakeGenericMethod(referenceArray3)));
             iLProcessor.EmitStloc(definition9);
             iLProcessor.EmitLdloc(definition9);
             iLProcessor.Emit(OpCodes.Callvirt, base.ModuleContext.GetCorLibMethod("System.Reflection.MethodBase", "get_IsStatic"));
@@ -1277,7 +1277,7 @@
             iLProcessor.Emit(OpCodes.Call, this.objectToGCHandleMethod);
             iLProcessor.EmitStloc(definition5);
             iLProcessor.Emit(OpCodes.Leave_S, target);
-            MethodDefinition method = base.Module.GetType("UnityEngine.MonoBehaviour").Methods.Single<MethodDefinition>(<>c.<>9__35_0 ?? (<>c.<>9__35_0 = new Func<MethodDefinition, bool>(<>c.<>9.<WSA_AddInvokeMethodReflectionMethod>b__35_0)));
+            MethodDefinition method = base.Module.GetType("UnityEngine.MonoBehaviour").Methods.Single<MethodDefinition>(InnerClass.FuncP ?? (InnerClass.FuncP = new Func<MethodDefinition, bool>(InnerClass.InnerInstance.IsWSA_AddInvokeMethodReflectionMethodSpecial)));
             iLProcessor.Emit(OpCodes.Call, method);
             handler.TryStart = body.Instructions.First<Instruction>();
             handler.TryEnd = body.Instructions.Last<Instruction>();
@@ -1291,73 +1291,77 @@
             iLProcessor.Emit(OpCodes.Ret);
             return item;
         }
-
-        [Serializable, CompilerGenerated]
-        private sealed class <>c
+        private struct InnerStruct
         {
-            public static readonly AddMethodUtilityClassStep.<>c <>9 = new AddMethodUtilityClassStep.<>c();
-            public static Func<MethodDefinition, bool> <>9__27_0;
-            public static Func<MethodDefinition, bool> <>9__29_0;
-            public static Func<MethodDefinition, bool> <>9__30_0;
-            public static Func<MethodDefinition, bool> <>9__30_1;
-            public static Func<ExportedType, bool> <>9__31_0;
-            public static Func<ExportedType, bool> <>9__31_1;
-            public static Func<ExportedType, bool> <>9__31_2;
-            public static Func<MethodDefinition, bool> <>9__31_3;
-            public static Func<MethodDefinition, bool> <>9__31_4;
-            public static Func<MethodDefinition, bool> <>9__32_0;
-            public static Func<MethodDefinition, bool> <>9__33_0;
-            public static Func<MethodDefinition, bool> <>9__33_1;
-            public static Func<MethodDefinition, bool> <>9__33_2;
-            public static Func<MethodDefinition, bool> <>9__34_0;
-            public static Func<MethodDefinition, bool> <>9__34_1;
-            public static Func<MethodDefinition, bool> <>9__35_0;
-            public static Func<ExportedType, bool> <>9__36_0;
-            public static Func<ExportedType, bool> <>9__36_1;
-            public static Func<ExportedType, bool> <>9__36_2;
-            public static Func<ExportedType, bool> <>9__36_3;
-            public static Func<ExportedType, bool> <>9__36_4;
-            public static Func<MethodDefinition, bool> <>9__36_5;
-            public static Func<MethodDefinition, bool> <>9__36_6;
-            public static Func<MethodDefinition, bool> <>9__36_7;
-            public static Func<MethodDefinition, bool> <>9__36_8;
+            public TypeReference FromType;
+            public TypeReference[] ToTypes;
+        }
+        [Serializable, CompilerGenerated]
+        private sealed class InnerClass
+        {
+            public static readonly AddMethodUtilityClassStep.InnerClass InnerInstance = new AddMethodUtilityClassStep.InnerClass();
+            public static Func<MethodDefinition, bool> FuncA;
+            public static Func<MethodDefinition, bool> FuncB;
+            public static Func<MethodDefinition, bool> FuncC;
+            public static Func<MethodDefinition, bool> FuncD;
+            public static Func<ExportedType, bool> FuncE;
+            public static Func<ExportedType, bool> FuncF;
+            public static Func<ExportedType, bool> FuncG;
+            public static Func<MethodDefinition, bool> FuncH;
+            public static Func<MethodDefinition, bool> FuncI;
+            public static Func<MethodDefinition, bool> FuncJ;
+            public static Func<MethodDefinition, bool> FuncK;
+            public static Func<MethodDefinition, bool> FuncL;
+            public static Func<MethodDefinition, bool> FuncM;
+            public static Func<MethodDefinition, bool> FuncN;
+            public static Func<MethodDefinition, bool> FuncO;
+            public static Func<MethodDefinition, bool> FuncP;
+            public static Func<ExportedType, bool> FuncQ;
+            public static Func<ExportedType, bool> FuncR;
+            public static Func<ExportedType, bool> FuncS;
+            public static Func<ExportedType, bool> FuncT;
+            public static Func<ExportedType, bool> FuncU;
+            public static Func<MethodDefinition, bool> FuncV;
+            public static Func<MethodDefinition, bool> FuncW;
+            public static Func<MethodDefinition, bool> FuncX;
+            public static Func<MethodDefinition, bool> FuncY;
 
-            internal bool <AddCreateInstanceMethod>b__29_0(MethodDefinition m)
+            internal bool IsAddCreateInstanceMethodSpecial(MethodDefinition m)
             {
                 return (m.Name == "CreateInstance");
             }
 
-            internal bool <AddInvokeDefaultConstructorMethod>b__30_0(MethodDefinition m)
+            internal bool IsAddInvokeDefaultConstructorMethodSpecial(MethodDefinition m)
             {
                 return ((m.Name == "GetConstructor") && (m.Parameters.Count == 4));
             }
 
-            internal bool <AddInvokeDefaultConstructorMethod>b__30_1(MethodDefinition m)
+            internal bool IsAddCreateInstanceMethodSpecialA(MethodDefinition m)
             {
                 return ((m.Name == "Invoke") && (m.Parameters.Count == 2));
             }
 
-            internal bool <AddInvokeMethodMethod>b__32_0(MethodDefinition m)
+            internal bool IsAddInvokeMethodMethodSpecial(MethodDefinition m)
             {
                 return (m.Name == "HandleFastCallException");
             }
 
-            internal bool <AddInvokeMethodReflectionMethod>b__34_0(MethodDefinition m)
+            internal bool IsAddInvokeMethodReflectionMethodSpecial(MethodDefinition m)
             {
                 return ((m.Name == "InvokeMember") && (m.Parameters.Count == 5));
             }
 
-            internal bool <AddInvokeMethodReflectionMethod>b__34_1(MethodDefinition m)
+            internal bool IsAddInvokeMethodReflectionMethodSpecialA(MethodDefinition m)
             {
                 return (m.Name == "HandleFastCallException");
             }
 
-            internal bool <AddUtf8ToStringMethod>b__33_0(MethodDefinition m)
+            internal bool IsAddUtf8ToStringMethodSpecial(MethodDefinition m)
             {
                 return ((((m.Name == "op_Explicit") && (m.Parameters.Count == 1)) && (m.Parameters[0].ParameterType.MetadataType == MetadataType.IntPtr)) && m.ReturnType.IsPointer);
             }
 
-            internal bool <AddUtf8ToStringMethod>b__33_1(MethodDefinition m)
+            internal bool IsAddUtf8ToStringMethodSpecialA(MethodDefinition m)
             {
                 if (m.Name != "Copy")
                 {
@@ -1371,7 +1375,7 @@
                 return ((((parameters[0].ParameterType.MetadataType == MetadataType.IntPtr) && (parameters[1].ParameterType.FullName == "System.Byte[]")) && (parameters[2].ParameterType.MetadataType == MetadataType.Int32)) && (parameters[3].ParameterType.MetadataType == MetadataType.Int32));
             }
 
-            internal bool <AddUtf8ToStringMethod>b__33_2(MethodDefinition m)
+            internal bool IsAddUtf8ToStringMethodSpecialB(MethodDefinition m)
             {
                 if (m.Name != "GetString")
                 {
@@ -1385,82 +1389,82 @@
                 return (((parameters[0].ParameterType.FullName == "System.Byte[]") && (parameters[1].ParameterType.MetadataType == MetadataType.Int32)) && (parameters[2].ParameterType.MetadataType == MetadataType.Int32));
             }
 
-            internal bool <ProcessModule>b__27_0(MethodDefinition m)
+            internal bool IsProcessModuleSpecial(MethodDefinition m)
             {
                 return ((m.Name == "op_Explicit") && (m.Parameters[0].ParameterType.MetadataType == MetadataType.IntPtr));
             }
 
-            internal bool <WSA_AddGetMethodMethod>b__36_0(ExportedType t)
+            internal bool IsWSA_AddGetMethodMethodSpecialH(ExportedType t)
             {
                 return (t.FullName == "System.Reflection.TypeInfo");
             }
 
-            internal bool <WSA_AddGetMethodMethod>b__36_1(ExportedType t)
+            internal bool IsWSA_AddGetMethodMethodSpecialG(ExportedType t)
             {
                 return (t.FullName == "System.Collections.Generic.IEnumerable`1");
             }
 
-            internal bool <WSA_AddGetMethodMethod>b__36_2(ExportedType t)
+            internal bool IsWSA_AddGetMethodMethodSpecialF(ExportedType t)
             {
                 return (t.FullName == "System.Collections.Generic.IEnumerator`1");
             }
 
-            internal bool <WSA_AddGetMethodMethod>b__36_3(ExportedType t)
+            internal bool IsWSA_AddGetMethodMethodSpecialE(ExportedType t)
             {
                 return (t.FullName == "System.Reflection.MethodInfo");
             }
 
-            internal bool <WSA_AddGetMethodMethod>b__36_4(ExportedType t)
+            internal bool IsWSA_AddGetMethodMethodSpecialD(ExportedType t)
             {
                 return (t.FullName == "System.Reflection.ParameterInfo");
             }
 
-            internal bool <WSA_AddGetMethodMethod>b__36_5(MethodDefinition m)
+            internal bool IsWSA_AddGetMethodMethodSpecialC(MethodDefinition m)
             {
                 return (m.Name == "GetEnumerator");
             }
 
-            internal bool <WSA_AddGetMethodMethod>b__36_6(MethodDefinition m)
+            internal bool IsWSA_AddGetMethodMethodSpecialB(MethodDefinition m)
             {
                 return (m.Name == "get_Current");
             }
 
-            internal bool <WSA_AddGetMethodMethod>b__36_7(MethodDefinition m)
+            internal bool IsWSA_AddGetMethodMethodSpecialA(MethodDefinition m)
             {
                 return ((((m.Name == "Format") && (m.Parameters.Count == 2)) && m.Parameters[1].ParameterType.IsArray) && (((ArrayType) m.Parameters[1].ParameterType).ElementType.MetadataType == MetadataType.Object));
             }
 
-            internal bool <WSA_AddGetMethodMethod>b__36_8(MethodDefinition m)
+            internal bool IsWSA_AddGetMethodMethodSpecial(MethodDefinition m)
             {
                 return (m.IsConstructor && (m.Parameters.Count == 1));
             }
 
-            internal bool <WSA_AddInvokeDefaultConstructorMethod>b__31_0(ExportedType t)
+            internal bool IsWSA_AddInvokeDefaultConstructorMethodSpecialD(ExportedType t)
             {
                 return (t.FullName == "System.Collections.Generic.IEnumerable`1");
             }
 
-            internal bool <WSA_AddInvokeDefaultConstructorMethod>b__31_1(ExportedType t)
+            internal bool IsWSA_AddInvokeDefaultConstructorMethodSpecialC(ExportedType t)
             {
                 return (t.FullName == "System.Collections.Generic.IEnumerator`1");
             }
 
-            internal bool <WSA_AddInvokeDefaultConstructorMethod>b__31_2(ExportedType t)
+            internal bool IsWSA_AddInvokeDefaultConstructorMethodSpecialB(ExportedType t)
             {
                 return (t.FullName == "System.Reflection.ConstructorInfo");
             }
 
-            internal bool <WSA_AddInvokeDefaultConstructorMethod>b__31_3(MethodDefinition m)
+            internal bool IsWSA_AddInvokeDefaultConstructorMethodSpecialA(MethodDefinition m)
             {
                 return (m.Name == "GetEnumerator");
             }
 
-            internal bool <WSA_AddInvokeDefaultConstructorMethod>b__31_4(MethodDefinition m)
+            internal bool IsWSA_AddInvokeDefaultConstructorMethodSpecial(MethodDefinition m)
             {
                 return (m.Name == "get_Current");
             }
 
-            internal bool <WSA_AddInvokeMethodReflectionMethod>b__35_0(MethodDefinition m)
+            internal bool IsWSA_AddInvokeMethodReflectionMethodSpecial(MethodDefinition m)
             {
                 return (m.Name == "HandleFastCallException");
             }
