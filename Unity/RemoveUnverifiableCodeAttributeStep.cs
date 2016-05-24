@@ -18,7 +18,7 @@
 
         protected override void ProcessModule()
         {
-            CustomAttribute item = base.Module.CustomAttributes.SingleOrDefault<CustomAttribute>(<>c.<>9__1_0 ?? (<>c.<>9__1_0 = new Func<CustomAttribute, bool>(<>c.<>9.<ProcessModule>b__1_0)));
+            CustomAttribute item = base.Module.CustomAttributes.SingleOrDefault<CustomAttribute>(InnerClass.FuncA ?? (InnerClass.FuncA = new Func<CustomAttribute, bool>(InnerClass.InnerInstance.IsProcessModuleSpecial)));
             if (item != null)
             {
                 base.Module.CustomAttributes.Remove(item);
@@ -26,12 +26,12 @@
         }
 
         [Serializable, CompilerGenerated]
-        private sealed class <>c
+        private sealed class InnerClass
         {
-            public static readonly RemoveUnverifiableCodeAttributeStep.<>c <>9 = new RemoveUnverifiableCodeAttributeStep.<>c();
-            public static Func<CustomAttribute, bool> <>9__1_0;
+            public static readonly RemoveUnverifiableCodeAttributeStep.InnerClass InnerInstance = new RemoveUnverifiableCodeAttributeStep.InnerClass();
+            public static Func<CustomAttribute, bool> FuncA;
 
-            internal bool <ProcessModule>b__1_0(CustomAttribute a)
+            internal bool IsProcessModuleSpecial(CustomAttribute a)
             {
                 return ((a.AttributeType.FullName == "System.Security.UnverifiableCodeAttribute") && (a.AttributeType.Scope.GetAssemblyName() == "mscorlib"));
             }
