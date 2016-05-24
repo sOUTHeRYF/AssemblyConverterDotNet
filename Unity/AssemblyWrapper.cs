@@ -216,7 +216,7 @@
             {
                 return null;
             }
-            list.Sort(<>c.<>9__31_0 ?? (<>c.<>9__31_0 = new Comparison<MethodWrapper>(<>c.<>9.<GetCallableMethods>b__31_0)));
+            list.Sort(InnerClass.ComparisonA ?? (InnerClass.ComparisonA = new Comparison<MethodWrapper>(InnerClass.InnerInstance.IsGetCallableMethodsSpecial)));
             return list.ToArray();
         }
 
@@ -332,7 +332,7 @@
 
         public static bool HasSerializeFieldAttribute(FieldDefinition field)
         {
-            return field.CustomAttributes.Any<CustomAttribute>((<>c.<>9__38_0 ?? (<>c.<>9__38_0 = new Func<CustomAttribute, bool>(<>c.<>9.<HasSerializeFieldAttribute>b__38_0))));
+            return field.CustomAttributes.Any<CustomAttribute>((InnerClass.FuncC ?? (InnerClass.FuncC = new Func<CustomAttribute, bool>(InnerClass.InnerInstance.IsHasSerializeFieldAttributeSpecial))));
         }
 
         private static bool IsCallableMethod(TypeWrapper typeWrapper, MethodDefinition method)
@@ -349,7 +349,7 @@
             {
                 return false;
             }
-            if (method.Parameters.Any<ParameterDefinition>(<>c.<>9__34_0 ?? (<>c.<>9__34_0 = new Func<ParameterDefinition, bool>(<>c.<>9.<IsCallableMethod>b__34_0))))
+            if (method.Parameters.Any<ParameterDefinition>(InnerClass.FuncA ?? (InnerClass.FuncA = new Func<ParameterDefinition, bool>(InnerClass.InnerInstance.IsIsCallableMethodSpecialA))))
             {
                 return false;
             }
@@ -359,7 +359,7 @@
                 {
                     return false;
                 }
-                if (method.HasOverrides && method.Overrides.Any<MethodReference>((<>c.<>9__34_2 ?? (<>c.<>9__34_2 = new Func<MethodReference, bool>(<>c.<>9.<IsCallableMethod>b__34_2)))))
+                if (method.HasOverrides && method.Overrides.Any<MethodReference>((InnerClass.FuncB ?? (InnerClass.FuncB = new Func<MethodReference, bool>(InnerClass.InnerInstance.IsIsCallableMethodSpecialB)))))
                 {
                     return false;
                 }
@@ -460,15 +460,15 @@
         }
 
         [Serializable, CompilerGenerated]
-        private sealed class <>c
+        private sealed class InnerClass
         {
-            public static readonly AssemblyWrapper.<>c <>9 = new AssemblyWrapper.<>c();
-            public static Comparison<MethodWrapper> <>9__31_0;
-            public static Func<ParameterDefinition, bool> <>9__34_0;
-            public static Func<MethodReference, bool> <>9__34_2;
-            public static Func<CustomAttribute, bool> <>9__38_0;
+            public static readonly AssemblyWrapper.InnerClass InnerInstance = new AssemblyWrapper.InnerClass();
+            public static Comparison<MethodWrapper> ComparisonA;
+            public static Func<ParameterDefinition, bool> FuncA;
+            public static Func<MethodReference, bool> FuncB;
+            public static Func<CustomAttribute, bool> FuncC;
 
-            internal int <GetCallableMethods>b__31_0(MethodWrapper left, MethodWrapper right)
+            internal int IsGetCallableMethodsSpecial(MethodWrapper left, MethodWrapper right)
             {
                 int num = string.Compare(left.Name, right.Name, StringComparison.InvariantCulture);
                 if (num != 0)
@@ -509,18 +509,18 @@
                 return 0;
             }
 
-            internal bool <HasSerializeFieldAttribute>b__38_0(CustomAttribute a)
+            internal bool IsHasSerializeFieldAttributeSpecial(CustomAttribute a)
             {
                 TypeReference declaringType = a.Constructor.DeclaringType;
                 return ((declaringType.FullName == "UnityEngine.SerializeField") && (declaringType.GetAssemblyName() == "UnityEngine"));
             }
 
-            internal bool <IsCallableMethod>b__34_0(ParameterDefinition p)
+            internal bool IsIsCallableMethodSpecialA(ParameterDefinition p)
             {
                 return !AssemblyWrapper.IsCallableParameter(p.ParameterType, false);
             }
 
-            internal bool <IsCallableMethod>b__34_2(MethodReference m)
+            internal bool IsIsCallableMethodSpecialB(MethodReference m)
             {
                 return AssemblyWrapper.nativeInteropTypes.Any<string>(t => m.DeclaringType.FullName.StartsWith(t));
             }
